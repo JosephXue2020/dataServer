@@ -1,0 +1,19 @@
+header{
+    padding:8px 50px;
+    background-color: lightseagreen;
+    background-image: url('/static/image/bg.jpg');
+}
+.nav-item {
+    padding:2px 30px;
+    list-style: none;
+}
+.nav-item > .nav-link .active {
+    color:black;
+}
+.navbar-text {
+    padding:2px 30px;
+    float: right;
+}
+ul>li {
+    list-style: circle;
+}

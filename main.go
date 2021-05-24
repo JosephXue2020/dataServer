@@ -8,6 +8,6 @@ import (
 
 func main() {
 	fmt.Println("Data server website is starting...")
-	r := routers.Init()
+	r := routers.SetupRouter()
 	r.Run(":8000")
 }
