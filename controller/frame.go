@@ -45,7 +45,7 @@ var Dropdown map[string]interface{}
 
 // SetFootbar function setup footbar of the web
 func SetFootbar() []Link {
-	sli := make([]Link, 5)
+	sli := make([]Link, 0)
 	sli = append(sli, Link{"百科社讯网", "http://itc.ecph.com.cn/"})
 	sli = append(sli, Link{"百科三版资源库", "http://192.168.12.129:8080/discovery/site/search"})
 	return sli

@@ -64,12 +64,16 @@
 
     <div id="test"></div>
     <br/>
+
+    {{/* footbar显示 */}}
     <div>
         <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-bottom" >
             <ul class="navbar-nav">
+                {{range $i, $v := .footbar}}
                 <li class="nav-item">
-                    <a  href="" class="nav-link"></a>
+                    <a  href="{{$v.Url}}" class="nav-link">{{$v.Name}}</a>
                 </li>
+                {{end}}
             </ul>
         </nav>
     </div>
