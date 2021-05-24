@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Init function initialize router engine
+// Setup function initialize router engine
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 	r.LoadHTMLFiles("templates/frame.tmpl")
@@ -17,10 +17,13 @@ func SetupRouter() *gin.Engine {
 
 // loadFrame is the function load the html frame
 func LoadFrame(r *gin.Engine) {
-	r.GET("", controller.ShowHomepage)
-	r.GET("/toolbox", controller.ShowToolBox)
-	r.GET("/processonline", controller.ShowProcessOnline)
-	r.GET("/datashare", controller.ShowDataShare)
-	r.GET("/contactus", controller.ShowContactUs)
-	r.GET("/user", controller.ShowUser)
+	r.GET("/", controller.HomepageController)
+	r.GET("/toolbox", controller.ToolboxController)
+	r.GET("/processonline", controller.ProcessonlineController)
+	r.GET("/datashare", controller.DatashareController)
+	r.GET("/contactus", controller.ContactusController)
+	r.GET("/login", controller.LoginController)
+	r.GET("/logout", controller.LogoutController)
+	r.GET("/changepw", controller.ChangepwController)
+	r.GET("/admin", controller.AdminController)
 }

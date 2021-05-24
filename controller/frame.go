@@ -6,32 +6,106 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// ShowHomepage response the homepage
-func ShowHomepage(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", gin.H{})
+// ColField is struct type of each column
+type Link struct {
+	Name string
+	Url  string
 }
 
-// ShowToolBox response the toolbox column
-func ShowToolBox(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", gin.H{})
+// SetColumn function setup columns of the web
+func SetColumn() []Link {
+	sli := []Link{
+		{"首页", "/"},
+		{"工具箱", "/toolbox"},
+		{"数据在线处理", "/processonline"},
+		{"数据共享", "/datashare"},
+		{"联系我们", "/contactus"},
+	}
+	return sli
 }
 
-// ShowProcessOnline response the toolbox column
-func ShowProcessOnline(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", gin.H{})
+// enviroment varialbes
+var Column []Link
+
+// SetDropdown function setup dropdown columns of the web
+func SetDropdown() map[string]interface{} {
+	m := make(map[string]interface{})
+	m["toggle"] = Link{"用户", "#"}
+	m["menu"] = []Link{
+		{"登录", "/login"},
+		{"登出", "/logout"},
+		{"修改密码", "/changepw"},
+		{"管理员", "/admin"},
+	}
+	return m
 }
 
-// ShowDataShare response the toolbox column
-func ShowDataShare(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", gin.H{})
+// enviroment varialbes
+var Dropdown map[string]interface{}
+
+// SetFootbar function setup footbar of the web
+func SetFootbar() []Link {
+	sli := make([]Link, 5)
+	sli = append(sli, Link{"百科社讯网", "http://itc.ecph.com.cn/"})
+	sli = append(sli, Link{"百科三版资源库", "http://192.168.12.129:8080/discovery/site/search"})
+	return sli
 }
 
-// ShowContactUs response the toolbox column
-func ShowContactUs(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", gin.H{})
+// enviroment variables
+var Footbar []Link
+
+// Element variables
+var Element map[string]interface{}
+
+// init function
+func init() {
+	Column = SetColumn()
+	Dropdown = SetDropdown()
+	Footbar = SetFootbar()
+	Element = map[string]interface{}{
+		"column":   Column,
+		"dropdown": Dropdown,
+		"footbar":  Footbar,
+	}
 }
 
-// ShowUser response the toolbox column
-func ShowUser(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", gin.H{})
+// HomepageController response the homepage
+func HomepageController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
+}
+
+func ToolboxController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
+}
+
+func ProcessonlineController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
+}
+
+func DatashareController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
+}
+
+func ContactusController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
+}
+
+func UserController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
+}
+
+func LoginController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
+}
+
+func LogoutController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
+}
+
+func ChangepwController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
+}
+
+func AdminController(c *gin.Context) {
+	c.HTML(http.StatusOK, "frame.tmpl", Element)
 }
