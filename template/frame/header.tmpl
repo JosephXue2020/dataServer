@@ -1,0 +1,42 @@
+{{define "header.tmpl"}}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/css/base.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+
+    <title>中国大百科全书出版社・数据服务平台</title>
+</head>
+<body>
+    <header class="page-title">
+        <h1>中国大百科全书出版社・数据服务平台</h1>
+    </header>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" role="navigation">
+        <ul class="navbar-nav">
+            {{range $i, $v := .column}}
+                <li class="nav-item active">
+                    <a  href="{{ $v.Url }}" class="nav-link" > {{ $v.Name }}</a>
+                </li>
+            {{end}}
+            <li class="nav-item dropdown">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{.dropdown.toggle.Url}}" id="navbardrop" data-toggle="dropdown">
+                        {{.dropdown.toggle.Name}}
+                    </a>
+                    <div class="dropdown-menu">
+                        {{range $i, $v := .dropdown.menu}}
+                            <a href="{{$v.Url}}" class="dropdown-item">{{$v.Name}}</a>
+                        {{end}}
+                    </div>
+                 </div>
+            </li>
+        </ul>
+        <span class="navbar-text" id="greeting" ></span>
+    </nav>
+    <br/>
+
+{{end}}

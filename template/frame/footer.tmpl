@@ -1,0 +1,74 @@
+{{define "footer.tmpl"}}
+
+    <div id="test"></div>
+    <br/>
+
+    {{/* footbar显示 */}}
+    <div>
+        <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-bottom" >
+            <ul class="navbar-nav">
+                {{range $i, $v := .footbar}}
+                <li class="nav-item">
+                    <a  href="{{$v.Url}}" class="nav-link">{{$v.Name}}</a>
+                </li>
+                {{end}}
+            </ul>
+        </nav>
+    </div>
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {{/* 以下三者的引用顺序是固定的 */}}
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/static/js/popper-1.15.0.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap4.min.js"></script>
+</body>
+
+{{/* 显示消息提示栏内容 */}}
+<script>
+    function setResult(data){
+        var is_login = data['is_login'];
+        var user_name = data['user_name'];
+        var form_list = data['form_list'];
+        var greeting = '';
+        var str = '';
+        if(Boolean(is_login)===false){
+            greeting += '未登陆！';
+            str += '登陆后显示待办事项';
+        }else if(form_list===false){
+            greeting += '欢迎&nbsp;' + user_name + '&nbsp;光临本站！';
+            str += '没有需要处理的事项';
+        }else{
+            greeting += '欢迎&nbsp;' + user_name + '&nbsp;光临本站！';
+            var form_num = form_list.length;
+            for (var i = 0; i < form_num; i++) {
+                var item = form_list[i];
+                str += '<li style="list-style:circle">' + item[1] + '&nbsp的下载申请'  + '：' + item[2] + '</li>';
+            };
+        };
+        document.getElementById('greeting').innerHTML = greeting;
+        document.getElementById('bulletin-content').innerHTML = str;
+        {#document.getElementById('bulletin-content').innerHTML = '显示这个消息说明上述不成功';#}
+        {#$('#bulletin-content').html('显示这个消息说明上述不成功');#}
+    };
+    $.ajax({
+        type: "GET",
+        url: "{% url 'datashare:bulletin' %}",
+        async: true,
+        dataType: "JSON",
+        success: function(data){
+            setResult(data)
+        }
+    });
+</script>
+
+{{/* 设置当前页面对应的导航键为激活状态 */}}
+<script>
+    $(document).ready(function() {
+      $('li.active').removeClass('active');
+      $('a[href="' + location.pathname + '"]').closest('li').addClass('active');
+    });
+</script>
+</html>
+
+{{end}}

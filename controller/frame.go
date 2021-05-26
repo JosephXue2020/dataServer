@@ -71,23 +71,23 @@ func init() {
 
 // HomepageController response the homepage
 func HomepageController(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", Element)
+	c.HTML(http.StatusOK, "homepage.tmpl", Element)
 }
 
 func ToolboxController(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", Element)
+	c.HTML(http.StatusOK, "toolbox.tmpl", Element)
 }
 
 func ProcessonlineController(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", Element)
+	c.HTML(http.StatusOK, "processonline.tmpl", Element)
 }
 
 func DatashareController(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", Element)
+	c.HTML(http.StatusOK, "datashare.tmpl", Element)
 }
 
 func ContactusController(c *gin.Context) {
-	c.HTML(http.StatusOK, "frame.tmpl", Element)
+	c.HTML(http.StatusOK, "contactus.tmpl", Element)
 }
 
 func UserController(c *gin.Context) {

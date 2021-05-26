@@ -1,0 +1,31 @@
+{{define "homepage.tmpl"}}
+
+{{template "header.tmpl" .}}
+
+    <div class="container-fluid px-0">
+        <div class="container px-0">
+            <div class="row">
+                <div class="col-12 col-lg-9 bg-light">
+                    <!可替换的block>   
+                    这里是homepage
+                </div>
+
+                <div class="col-12 col-lg-3">
+                    {{/* offse-1 显示分隔 */}}
+                    <div class="card">
+                        <div class="card-header">
+                            <b>待办事项 &nbsp</b>
+                            <a href="">
+                                >>详情
+                            </a>
+                        </div>
+                        <div class="card-body" id="bulletin-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{template "footer.tmpl" .}}
+
+{{end}}
